@@ -1,0 +1,6 @@
+#!/bin/bash
+for i in $(pgrep sshd); do chrt -p 99 $i; done
+for i in $(pgrep badvpn); do chrt -p 99 $i; done
+for i in $(pgrep python); do chrt -p 99 $i; done
+for i in $(pgrep dhclient); do chrt -p 99 $i; done
+

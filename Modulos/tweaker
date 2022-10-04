@@ -1,0 +1,606 @@
+#!/bin/bash
+### @ALFAINTERNET ###
+clear
+echo -e "\E[41;1;37m  TWEAKER QUICK    \E[0m"
+if [[ `grep -c "^#PH56" /etc/sysctl.conf` -eq 1 ]]
+then
+echo -e "\033[01;34m===================================================================="
+	echo -e "\033[1;33mOOPS! CONFIGURAÇÃO TWEAKER JA APLICADO...\033[1;37m"
+echo ""
+	echo -e "\033[1;33mREMOVAR EM CASO DE LENTIDÂO EXTREMA !\033[1;37m"
+echo ""
+	echo -e "\033[1;33mAPÓS REMOVER, REINICIE SEU SERVIDOR, PARA RESETAR OS VALORES.\033[1;37m"
+echo -e "\033[01;34m====================================================================\033[1;37m"
+	echo ""
+	read -p "DESEJA REMOVER CONFIGURAÇÃO TWEAKER? [sim/nao]: " -e -i nao resposta0
+	if [[ "$resposta0" = 'sim' ]]; then
+		grep -v "^#PH56
+#"1"
+fs.nr_open = 1048576
+fs.file-max = 1048576
+vm.vfs_cache_pressure = 200
+vm.swappiness = 100
+vm.page-cluster = 16
+vm.dirty_ratio = 1
+vm.dirty_background_ratio = 1
+vm.overcommit_memory = 1
+
+#"2"
+
+kernel.sched_migration_cost_ns = 800000000
+kernel.sched_latency_ns = 1000000
+kernel.sched_nr_migrate = 32768
+kernel.sched_wakeup_granularity_ns = 10000
+kernel.threads-max = 16384
+kernel.pid_max = 16384
+kernel.pty.max = 8192
+kernel.sched_tunable_scaling = 1
+kernel.sched_rt_runtime_us = -1
+kernel.sched_rt_period_us = -1
+kernel.sched_rr_timeslice_ms = -1
+kernel.sched_autogroup_enabled = 0
+
+#"3"
+
+net.ipv4.tcp_mem = 10000000 10000000 10000000
+net.ipv4.udp_mem = 10000000 10000000 10000000
+net.ipv4.tcp_wmem = 4096 524288 11960320
+net.ipv4.tcp_rmem = 4096 524288 11960320
+net.core.rmem_default = 11960320
+net.core.wmem_default = 11960320
+net.core.wmem_max = 11960320
+net.core.rmem_max = 11960320
+net.ipv4.udp_wmem_min = 16384
+net.ipv4.udp_rmem_min = 16384
+
+#"4"
+
+net.core.netdev_max_backlog = 32768
+net.core.flow_limit_table_len = 32768
+net.core.optmem_max = 16384
+net.core.somaxconn = 16384
+net.unix.max_dgram_qlen = 16384
+net.core.netdev_budget = 16384
+net.core.rps_sock_flow_entries = 4096
+net.core.dev_weight = 1024
+net.core.busy_read = 25
+net.core.busy_poll = 25
+
+#"5"
+
+net.ipv4.tcp_congestion_control = illinois
+net.ipv4.tcp_allowed_congestion_control = illinois
+net.core.default_qdisc = fq
+
+#"6"
+
+net.ipv4.route.mtu_expires = 1800
+net.ipv4.tcp_keepalive_probes = 1024
+net.ipv4.tcp_synack_retries = 1024
+net.ipv4.tcp_keepalive_time = 300
+net.ipv4.tcp_keepalive_intvl = 120
+net.ipv4.tcp_syn_retries = 100
+net.ipv4.tcp_probe_interval = 30
+net.ipv4.tcp_fin_timeout = 15
+
+#"7"
+
+net.ipv4.ip_local_port_range = 60000 65535
+net.ipv4.tcp_max_syn_backlog = 32768
+net.ipv4.tcp_notsent_lowat = 16384
+net.ipv4.tcp_max_tw_buckets = 16384
+net.ipv4.tcp_base_mss = 1460
+net.ipv4.tcp_max_orphans = 8192
+net.ipv4.tcp_min_rtt_wlen = 1024
+net.ipv4.tcp_reordering = 1024
+net.ipv4.tcp_min_snd_mss = 1024
+net.ipv4.tcp_min_tso_segs = 1024
+net.ipv4.route.min_adv_mss = 1024
+net.ipv4.tcp_probe_threshold = 1024
+net.ipv4.tcp_fastopen = 1024
+net.ipv4.tcp_pacing_ca_ratio = 900
+net.ipv4.tcp_pacing_ss_ratio = 900
+net.ipv4.tcp_max_reordering = 600
+net.ipv4.tcp_window_scaling = 8
+net.ipv4.tcp_tso_win_divisor = 8
+net.ipv4.tcp_adv_win_scale = 8
+net.ipv4.tcp_mtu_probing = 2
+net.ipv4.tcp_orphan_retries = 2
+net.ipv4.tcp_abort_on_overflow = 1
+net.ipv4.fwmark_reflect = 1
+net.ipv4.ip_forward_use_pmtu = 1
+net.ipv4.ip_forward = 1
+net.ipv4.tcp_thin_linear_timeouts = 1
+net.ipv4.tcp_tw_reuse = 1
+net.ipv4.tcp_no_metrics_save = 1
+net.ipv4.tcp_early_retrans = 1
+net.ipv4.fib_multipath_use_neigh = 1
+net.ipv4.ipfrag_time = 1
+net.ipv4.xfrm4_gc_thresh = 0
+net.ipv4.tcp_app_win = 0
+net.ipv4.tcp_ecn_fallback = 0
+net.ipv4.tcp_invalid_ratelimit = 0
+net.ipv4.tcp_timestamps = 0
+net.ipv4.tcp_moderate_rcvbuf = 0
+net.ipv4.tcp_ecn = 0
+net.ipv4.tcp_slow_start_after_idle = 0
+net.ipv4.tcp_frto = 0
+
+#"8"
+
+net.ipv4.route.max_size = 32768
+net.ipv4.route.gc_thresh = 16384
+net.ipv4.route.gc_elasticity = 16384
+net.ipv4.route.gc_interval = 120
+net.ipv4.route.mtu_expires = 15
+net.ipv4.route.gc_timeout = 15
+net.ipv4.route.min_adv_mss = 1024
+net.ipv4.route.min_pmtu = 1024
+
+#"9"
+
+net.ipv4.neigh.default.unres_qlen_bytes = 11960320
+net.ipv4.neigh.default.unres_qlen = 32768
+net.ipv4.neigh.default.proxy_qlen = 16384
+net.ipv4.neigh.default.gc_thresh3 = 16384
+net.ipv4.neigh.default.gc_thresh2 = 8192
+net.ipv4.neigh.default.gc_thresh1 = 4096
+net.ipv4.neigh.default.gc_stale_time = 300
+net.ipv4.neigh.default.gc_interval = 120
+
+#"10"
+
+net.ipv4.neigh.eth0.proxy_qlen = 16777216
+net.ipv4.neigh.eth0.unres_qlen_bytes = 16777216
+net.ipv4.neigh.eth0.gc_stale_time = 86400
+net.ipv4.neigh.eth0.unres_qlen = 32768
+
+#"11"
+
+net.ipv4.neigh.lo.unres_qlen_bytes = 11960320
+net.ipv4.neigh.lo.unres_qlen = 32768
+net.ipv4.neigh.lo.proxy_qlen = 16384
+net.ipv4.neigh.lo.gc_stale_time = 300
+
+#"12"
+
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.lo.disable_ipv6 = 1" /etc/sysctl.conf > /tmp/syscl && mv /tmp/syscl /etc/sysctl.conf
+
+sysctl -p /etc/sysctl.conf > /dev/null
+echo -n > /etc/sysctl.conf
+crontab -u root -l | grep -v '@daily /sbin/fstrim -a || true'  | crontab -u root -
+crontab -u root -l | grep -v '@daily /bin/ackclear'  | crontab -u root -
+crontab -u root -l | grep -v '@daily /bin/prissh'  | crontab -u root -
+crontab -u root -l | grep -v '@reboot sleep 10s && /bin/prissh'  | crontab -u root -
+crontab -u root -l | grep -v '@reboot sleep 10s && /bin/tweaker'  | crontab -u root -
+crontab -u root -l | grep -v '@reboot sleep 10s && /bin/acksyshttpack'  | crontab -u root -
+cd /bin/ && rm -f ackclear*
+cd /bin/ && rm -f prissh*
+cd /bin/ && rm -f acksyshttpack*
+chattr -i /etc/resolv.conf
+chattr -i  /etc/systemd/resolved.conf
+echo -n > /etc/security/limits.conf
+echo -n > /etc/systemd/system.conf
+echo -n > /etc/systemd/logind.conf
+echo -n > /etc/systemd/resolved.conf
+echo -n > /etc/systemd/resolved.conf
+
+		echo ""
+	echo -e "\033[1;32mCONFIGURAÇÃO DE TWEAKER REMOVIDO COM SUCESSO !\033[1;37m"
+sleep 3s
+             exit
+	else
+echo ""
+exit
+	fi
+else
+echo -e "\033[01;34m===================================================================="
+echo -e "\033[1;33mUTILIZE EM SISTEMA ATUALIZADOS \033[1;32m(UBUNTU OU DEBIAN )"
+echo -e "\033[01;34m===================================================================="
+echo ""
+echo -e "\033[1;33mSERA APLICADO AJUSTES NO SERVIDOR, PARA OBTER UMA ALTA PERFORMANCE"
+echo -e "\033[1;33mAUMENTANDO LIMITE DE VALORES PADRÃO DO KERNEL LINUX"
+echo ""
+echo -e "\033[1;33mO RENDIMENTO PODE SER SUPERIOR OU NÃO."
+echo ""
+echo -e "\033[01;34m====================================================================\033[1;37m"
+echo ""
+	read -p "DESEJAR INSTALAR TWEAKER ? [sim/nao]: " -e -i sim resposta
+	if [[ "$resposta" = 'sim' ]]; then
+	echo ""
+	echo " " >> /etc/sysctl.conf
+	echo "#PH56" >> /etc/sysctl.conf
+#"1"
+
+echo "fs.nr_open = 1048576
+fs.file-max = 1048576
+vm.vfs_cache_pressure = 200
+vm.swappiness = 100
+vm.page-cluster = 16
+vm.dirty_ratio = 1
+vm.dirty_background_ratio = 1
+vm.overcommit_memory = 1
+
+#"2"
+
+kernel.sched_migration_cost_ns = 800000000
+kernel.sched_latency_ns = 1000000
+kernel.sched_nr_migrate = 32768
+kernel.sched_wakeup_granularity_ns = 10000
+kernel.threads-max = 16384
+kernel.pid_max = 16384
+kernel.pty.max = 8192
+kernel.sched_tunable_scaling = 1
+kernel.sched_rt_runtime_us = -1
+kernel.sched_rt_period_us = -1
+kernel.sched_rr_timeslice_ms = -1
+kernel.sched_autogroup_enabled = 0
+
+#"3"
+
+net.ipv4.tcp_mem = 10000000 10000000 10000000
+net.ipv4.udp_mem = 10000000 10000000 10000000
+net.ipv4.tcp_wmem = 4096 524288 11960320
+net.ipv4.tcp_rmem = 4096 524288 11960320
+net.core.rmem_default = 11960320
+net.core.wmem_default = 11960320
+net.core.wmem_max = 11960320
+net.core.rmem_max = 11960320
+net.ipv4.udp_wmem_min = 16384
+net.ipv4.udp_rmem_min = 16384
+
+#"4"
+
+net.core.netdev_max_backlog = 32768
+net.core.flow_limit_table_len = 32768
+net.core.optmem_max = 16384
+net.core.somaxconn = 16384
+net.unix.max_dgram_qlen = 16384
+net.core.netdev_budget = 16384
+net.core.rps_sock_flow_entries = 4096
+net.core.dev_weight = 1024
+net.core.busy_read = 25
+net.core.busy_poll = 25
+
+#"5"
+
+net.ipv4.tcp_congestion_control = illinois
+net.ipv4.tcp_allowed_congestion_control = illinois
+net.core.default_qdisc = fq
+
+#"6"
+net.ipv4.route.mtu_expires = 1800
+net.ipv4.tcp_keepalive_probes = 1024
+net.ipv4.tcp_synack_retries = 1024
+net.ipv4.tcp_keepalive_time = 300
+net.ipv4.tcp_keepalive_intvl = 120
+net.ipv4.tcp_syn_retries = 100
+net.ipv4.tcp_probe_interval = 30
+net.ipv4.tcp_fin_timeout = 15
+
+#"7"
+
+net.ipv4.ip_local_port_range = 60000 65535
+net.ipv4.tcp_max_syn_backlog = 32768
+net.ipv4.tcp_notsent_lowat = 16384
+net.ipv4.tcp_max_tw_buckets = 16384
+net.ipv4.tcp_base_mss = 1460
+net.ipv4.tcp_max_orphans = 8192
+net.ipv4.tcp_min_rtt_wlen = 1024
+net.ipv4.tcp_reordering = 1024
+net.ipv4.tcp_min_snd_mss = 1024
+net.ipv4.tcp_min_tso_segs = 1024
+net.ipv4.route.min_adv_mss = 1024
+net.ipv4.tcp_probe_threshold = 1024
+net.ipv4.tcp_fastopen = 1024
+net.ipv4.tcp_pacing_ca_ratio = 900
+net.ipv4.tcp_pacing_ss_ratio = 900
+net.ipv4.tcp_max_reordering = 600
+net.ipv4.tcp_window_scaling = 8
+net.ipv4.tcp_tso_win_divisor = 8
+net.ipv4.tcp_adv_win_scale = 8
+net.ipv4.tcp_mtu_probing = 2
+net.ipv4.tcp_orphan_retries = 2
+net.ipv4.tcp_abort_on_overflow = 1
+net.ipv4.fwmark_reflect = 1
+net.ipv4.ip_forward_use_pmtu = 1
+net.ipv4.ip_forward = 1
+net.ipv4.tcp_thin_linear_timeouts = 1
+net.ipv4.tcp_tw_reuse = 1
+net.ipv4.tcp_no_metrics_save = 1
+net.ipv4.tcp_early_retrans = 1
+net.ipv4.fib_multipath_use_neigh = 1
+net.ipv4.ipfrag_time = 1
+net.ipv4.xfrm4_gc_thresh = 0
+net.ipv4.tcp_app_win = 0
+net.ipv4.tcp_ecn_fallback = 0
+net.ipv4.tcp_invalid_ratelimit = 0
+net.ipv4.tcp_timestamps = 0
+net.ipv4.tcp_moderate_rcvbuf = 0
+net.ipv4.tcp_ecn = 0
+net.ipv4.tcp_slow_start_after_idle = 0
+net.ipv4.tcp_frto = 0
+
+#"8"
+
+net.ipv4.route.max_size = 32768
+net.ipv4.route.gc_thresh = 16384
+net.ipv4.route.gc_elasticity = 16384
+net.ipv4.route.gc_interval = 120
+net.ipv4.route.mtu_expires = 15
+net.ipv4.route.gc_timeout = 15
+net.ipv4.route.min_adv_mss = 1024
+net.ipv4.route.min_pmtu = 1024
+
+#"9"
+
+net.ipv4.neigh.default.unres_qlen_bytes = 11960320
+net.ipv4.neigh.default.unres_qlen = 32768
+net.ipv4.neigh.default.proxy_qlen = 16384
+net.ipv4.neigh.default.gc_thresh3 = 16384
+net.ipv4.neigh.default.gc_thresh2 = 8192
+net.ipv4.neigh.default.gc_thresh1 = 4096
+net.ipv4.neigh.default.gc_stale_time = 300
+net.ipv4.neigh.default.gc_interval = 120
+
+#"10"
+
+net.ipv4.neigh.eth0.proxy_qlen = 16777216
+net.ipv4.neigh.eth0.unres_qlen_bytes = 16777216
+net.ipv4.neigh.eth0.gc_stale_time = 86400
+net.ipv4.neigh.eth0.unres_qlen = 32768
+
+#"11"
+
+net.ipv4.neigh.lo.unres_qlen_bytes = 11960320
+net.ipv4.neigh.lo.unres_qlen = 32768
+net.ipv4.neigh.lo.proxy_qlen = 16384
+net.ipv4.neigh.lo.gc_stale_time = 300
+
+#"12"
+
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.lo.disable_ipv6 = 1" >> /etc/sysctl.conf
+#
+mount -o remount,noatime,nodiratime,nobarrier auto /
+mount -o remount,noatime,nodiratime, auto /dev
+mount -o remount,noatime,nodiratime, auto /proc
+mount -o remount,noatime,nodiratime, auto /sys
+apt install speedtest-cli -y > /dev/null 2>&1
+sleep 3s
+echo -e "\033[01;34m====================================================================\033[1;37m"
+echo -e "\033[1;33mTESTANDO LINK DE REDE...\033[1;37m"
+echo ""
+speedtest --simple
+echo ""
+echo -e "\033[01;34m====================================================================\033[1;37m"
+sleep 5s
+cd /bin/ && rm -f tweaker*
+cd /bin/ && rm -f acksyshttpack*
+cd /bin/ && rm -f ackclear*
+cd /bin/ && rm -f prissh*
+cd /bin/ && wget https://raw.githubusercontent.com/Niltonjuniornzx/anubis/master/Modulos/tuning/tweaker > /dev/null 2>&1
+cd /bin/ && wget https://raw.githubusercontent.com/Niltonjuniornzx/anubis/master/Modulos/acksyshttpack > /dev/null 2>&1
+cd /bin/ && wget https://raw.githubusercontent.com/Niltonjuniornzx/anubis/master/Modulos/ackclear > /dev/null 2>&1
+cd /bin/ && wget https://raw.githubusercontent.com/Niltonjuniornzx/anubis/master/Modulos/prissh > /dev/null 2>&1
+cd /bin/ && chmod +x tweaker
+cd /bin/ && chmod +x acksyshttpack
+cd /bin/ && chmod +x ackclear
+cd /bin/ && chmod +x prissh
+echo -e "\033[1;33mINICIANDO PROCESSOS..."
+sleep 5s
+echo ""
+echo -e "\033[1;33mCONFIGURANDO \033[1;32m( SYSCTL )\033[1;37m"
+sleep 3s
+sysctl -p /etc/sysctl.conf > /dev/null
+chattr -i /etc/resolv.conf
+chattr -i  /etc/systemd/resolved.conf
+echo ""
+echo -e "\033[1;33mCONFIGURANDO \033[1;32m( DNS )\033[1;37m"
+sleep 3s
+### "DNS"
+rm /etc/resolv.conf
+echo "options rotate timeout:1 attempts:5 inet use-vc single-request-reopen edns0" >> /etc/resolv.conf
+echo "search www.google.com" >> /etc/resolv.conf
+echo "nameserver 208.67.222.222" >> /etc/resolv.conf
+echo "nameserver 1.1.1.1" >> /etc/resolv.conf
+echo "nameserver 8.8.8.8" >> /etc/resolv.conf
+chmod +x /etc/resolv.conf
+### "SECURITY LIMITS" ###
+echo ""
+echo -e "\033[1;33mCONFIGURANDO LIMITES \033[1;32m( SECURITY )\033[1;37m"
+sleep 3s
+echo -n > /etc/security/limits.conf
+echo "root soft nproc unlimited" >> /etc/security/limits.conf
+echo "root hard nproc unlimited" >> /etc/security/limits.conf
+echo "root soft nofile 1048576" >> /etc/security/limits.conf
+echo "root hard nofile 1048576" >> /etc/security/limits.conf
+echo "root soft data unlimited" >> /etc/security/limits.conf
+echo "root hard data unlimited" >> /etc/security/limits.conf
+echo "root soft as unlimited" >> /etc/security/limits.conf
+echo "root hard as unlimited" >> /etc/security/limits.conf
+echo "root soft locks unlimited" >> /etc/security/limits.conf
+echo "root hard locks unlimited" >> /etc/security/limits.conf
+echo "root soft stack unlimited" >> /etc/security/limits.conf
+echo "root hard stack unlimited" >> /etc/security/limits.conf
+echo "root soft fsize unlimited" >> /etc/security/limits.conf
+echo "root hard fsize unlimited" >> /etc/security/limits.conf
+echo "root soft memlock unlimited" >> /etc/security/limits.conf
+echo "root hard memlock unlimited" >> /etc/security/limits.conf
+echo "root soft msgqueue unlimited" >> /etc/security/limits.conf
+echo "root hard msgqueue unlimited" >> /etc/security/limits.conf
+echo "root soft sigpending unlimited" >> /etc/security/limits.conf
+echo "root hard sigpending unlimited" >> /etc/security/limits.conf
+echo "root soft priority -11" >> /etc/security/limits.conf
+echo "root hard priority -11" >> /etc/security/limits.conf
+echo "root soft nice -11" >> /etc/security/limits.conf
+echo "root hard nice -11" >> /etc/security/limits.conf
+### "NETWORKS" ###
+echo ""
+echo -e "\033[1;33mCONFIGURANDO NETWORKS \033[1;32m( REDE )\033[1;37m"
+sleep 3s
+echo -n > /etc/networks
+echo "default         0.0.0.0" >> /etc/networks
+echo "loopback        127.0.0.1" >> /etc/networks
+echo "link-local      192.168.0.0" >> /etc/networks
+### "SYSTEM.CONF" ###
+echo ""
+echo -e "\033[1;33mCONFIGURANDO \033[1;32m( LIMITES SYSTEM )\033[1;37m"
+sleep 3s
+echo -n > /etc/systemd/system.conf
+echo "[Manager]" >> /etc/systemd/system.conf
+echo "IPAddressAllow=0.0.0.0" >> /etc/systemd/system.conf
+echo "DefaultTasksMax=200000" >> /etc/systemd/system.conf
+echo "DefaultLimitNOFILE=1048576" >> /etc/systemd/system.conf
+echo "DefaultTasksAccounting=yes" >> /etc/systemd/system.conf
+echo "DefaultLimitFSIZE=infinity" >> /etc/systemd/system.conf
+echo "DefaultLimitDATA=infinity" >> /etc/systemd/system.conf
+echo "DefaultLimitSTACK=infinity" >> /etc/systemd/system.conf
+echo "DefaultLimitCORE=infinity" >> /etc/systemd/system.conf
+echo "DefaultLimitRSS=infinity" >> /etc/systemd/system.conf
+echo "DefaultLimitAS=infinity" >> /etc/systemd/system.conf
+echo "DefaultLimitNPROC=infinity" >> /etc/systemd/system.conf
+echo "DefaultLimitMEMLOCK=infinity" >> /etc/systemd/system.conf
+echo "DefaultLimitLOCKS=infinity" >> /etc/systemd/system.conf
+echo "DefaultLimitSIGPENDING=infinity" >> /etc/systemd/system.conf
+echo "DefaultLimitMSGQUEUE=infinity" >> /etc/systemd/system.conf
+echo "DefaultLimitRTPRIO=infinity" >> /etc/systemd/system.conf
+echo "DefaultLimitRTTIME=infinity" >> /etc/systemd/system.conf
+echo "DefaultLimitNICE=-19" >> /etc/systemd/system.conf
+### "HOSTS" ###
+echo ""
+echo -e "\033[1;33mCONFIGURANDO HOSTS \033[1;32m( RESOLUÇAO DNS )\033[1;37m"
+sleep 3s
+echo -n > /etc/hosts
+echo -n > /etc/host.conf
+echo "127.0.0.1 www.google.com" >> /etc/hosts
+echo "127.0.0.1 localhost" >> /etc/hosts
+echo "order hosts,nospoof off,multi on,mdns on" >> /etc/host.conf
+### "SYSTEMD-LOGIN" ###
+echo ""
+echo -e "\033[1;33mCONFIGURANDO \033[1;32m( AUTENTICAÇÃO )\033[1;37m"
+sleep 3s
+echo -n > /etc/systemd/logind.conf
+echo "[Login]" >> /etc/systemd/logind.conf
+echo "UserTasksMax=20000" >> /etc/systemd/logind.conf
+echo "SessionsMax=20000" >> /etc/systemd/logind.conf
+echo "InhibitorsMax=8192" >> /etc/systemd/logind.conf
+echo "KillUserProcesses=no" >> /etc/systemd/logind.conf
+### "RESOLVED CONF" ###
+echo ""
+echo -e "\033[1;33mCONFIGURANDO \033[1;32m( RESOLVEDOR DNS )\033[1;37m"
+sleep 3s
+echo -n > /etc/systemd/resolved.conf
+echo "[Resolve]" >> /etc/systemd/resolved.conf
+echo "DNS=208.67.222.222 1.1.1.1 8.8.8.8" >> /etc/systemd/resolved.conf
+echo "FallbackDNS=208.67.222.222 1.1.1.1 8.8.8.8" >> /etc/systemd/resolved.conf
+echo "LLMNR=yes" >> /etc/systemd/resolved.conf
+echo "DNSSEC=yes" >> /etc/systemd/resolved.conf
+echo "Cache=yes" >> /etc/systemd/resolved.conf
+echo "DNSStubListener=udp" >> /etc/systemd/resolved.conf
+### "CRONTAB" ###
+echo ""
+echo -e "\033[1;33mCONFIGURANDO \033[1;32m( CRONTAB )\033[1;37m"
+sleep 3s
+(crontab -l; echo "@daily /sbin/fstrim -a || true") | crontab - > /dev/null 2>&1
+(crontab -l; echo "@daily /bin/ackclear") | crontab - > /dev/null 2>&1
+(crontab -l; echo "@daily /bin/prissh") | crontab - > /dev/null 2>&1
+(crontab -l; echo "@reboot sleep 10s && /bin/prissh") | crontab - > /dev/null 2>&1
+(crontab -l; echo "@reboot sleep 10s && /bin/acksyshttpack") | crontab - > /dev/null 2>&1
+(crontab -l; echo "@reboot sleep 10s && /bin/tweaker") | crontab - > /dev/null 2>&1
+### "SERVICE SSHD" ###
+echo ""
+echo -e "\033[1;33mCONFIGURANDO \033[1;32m( SSHD )\033[1;37m"
+sleep 3s
+echo -n > /etc/ssh/sshd_config
+echo "X11Forwarding yes" >> /etc/ssh/sshd_config
+echo "PrintMotd no" >> /etc/ssh/sshd_config
+echo "AcceptEnv LANG LC_*" >> /etc/ssh/sshd_config
+echo "Subsystem       sftp    /usr/lib/openssh/sftp-server" >> /etc/ssh/sshd_config
+echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
+echo "Compression yes" >> /etc/ssh/sshd_config
+echo "UseDNS yes" >> /etc/ssh/sshd_config
+echo "UsePAM yes" >> /etc/ssh/sshd_config
+echo "Authenticationmethods password" >> /etc/ssh/sshd_config
+echo "Kexalgorithms diffie-hellman-group14-sha1" >> /etc/ssh/sshd_config
+echo "Ciphers aes128-ctr" >> /etc/ssh/sshd_config
+echo "MACs hmac-sha1" >> /etc/ssh/sshd_config
+echo "Fingerprinthash MD5" >> /etc/ssh/sshd_config
+echo "ClientAliveCountMax 15" >> /etc/ssh/sshd_config
+echo "ClientAliveInterval 30s" >> /etc/ssh/sshd_config
+echo "MaxStartups 20000" >> /etc/ssh/sshd_config
+echo "MaxSessions 20000" >> /etc/ssh/sshd_config
+echo "MaxAuthTries 20000" >> /etc/ssh/sshd_config
+echo "LoginGraceTime 0s" >> /etc/ssh/sshd_config
+echo "TCPKeepAlive yes" >> /etc/ssh/sshd_config
+echo "Port 22" >> /etc/ssh/sshd_config
+echo "ipqos af21 cs1" >> /etc/ssh/sshd_config
+service sshd reload /dev/null 2>&1
+### "SERVICE SSH" ###
+echo ""
+echo -e "\033[1;33mCONFIGURANDO \033[1;32m( SSH )\033[1;37m"
+sleep 3s
+echo -n > /etc/ssh/ssh_config
+echo "Host *" >> /etc/ssh/ssh_config
+echo "ControlMaster auto" >> /etc/ssh/ssh_config
+echo "ControlPath ~/.ssh/%r@%h:%p" >> /etc/ssh/ssh_config
+echo "ControlPersist 86400s" >> /etc/ssh/ssh_config
+echo "ConnectTimeout 86400s" >> /etc/ssh/ssh_config
+echo "Compression yes" >> /etc/ssh/ssh_config
+echo "ConnectionAttempts 86400s" >> /etc/ssh/ssh_config
+echo "Port 22" >> /etc/ssh/ssh_config
+echo "ChallengeResponseAuthentication yes" >> /etc/ssh/ssh_config
+echo "ClearAllForwardings yes" >> /etc/ssh/ssh_config
+echo "ExitOnForwardFailure yes" >> /etc/ssh/ssh_config
+echo "Pubkeyauthentication no" >> /etc/ssh/ssh_config
+echo "PreferredAuthentications=password" >> /etc/ssh/ssh_config
+echo "Kexalgorithms diffie-hellman-group14-sha1" >> /etc/ssh/ssh_config
+echo "Ciphers aes128-ctr" >> /etc/ssh/ssh_config
+echo "MACs hmac-sha1" >> /etc/ssh/ssh_config
+echo "Fingerprinthash MD5" >> /etc/ssh/ssh_config
+echo "ServerAliveCountMax 15" >> /etc/ssh/ssh_config
+echo "ServerAliveInterval 30s" >> /etc/ssh/ssh_config
+echo "TCPKeepAlive yes" >> /etc/ssh/ssh_config
+echo "ipqos af21 cs1" >> /etc/ssh/ssh_config
+service ssh reload /dev/null 2>&1
+echo ""
+echo -e "\033[1;33mCONFIGURANDO MELHORIAS NA CARGA \033[1;32m( CPU )"
+echo "obase=16;2^$(nproc)-1" | bc > /sys/class/net/eth0/queues/rx-0/rps_cpus
+echo 16384 > /sys/class/net/eth0/queues/rx-0/rps_flow_cnt
+echo never > /sys/kernel/mm/transparent_hugepage/enabled
+bash -c 'echo 1 > /sys/module/processor/parameters/ignore_ppc'
+bash -c 'echo tsc > /sys/devices/system/clocksource/clocksource0/current_clocksource'
+bash -c 'echo 4400000 > /scaling_max_freq'
+sleep 3s
+echo ""
+echo -e "\033[1;33mCONFIGURANDO MTU & TXQUEUELEN \033[1;32m( INTERFACE ETH0 & LOOPBACK)"
+/sbin/ifconfig eth0 mtu 9000
+/sbin/ifconfig eth0 txqueuelen 13888
+/sbin/ifconfig lo mtu 9000
+/sbin/ifconfig lo txqueuelen 13888
+ethtool -G eth0 rx 3502 > /dev/null 2>&1
+ethtool -G eth0 tx 2048 > /dev/null 2>&1
+sleep 3s
+echo ""
+echo -e "\033[1;33mCONFIGURANDO CWND \033[1;32m(INITCWND)"
+/sbin/ip route | while read p; do ip route change $p initcwnd 10 initrwnd 10 cwnd 10 mtu lock 9000 congctl lock illinois quickack 1; done
+sleep 3s
+echo ""
+echo -e "\033[1;33mPRIORIZANDO PROCESSOS \033[1;32m( PYTHON + BADVPN + OPENSSH)"
+for i in $(pgrep sshd); do chrt -p 99 $i; done
+for i in $(pgrep badvpn); do chrt -p 99 $i; done
+for i in $(pgrep python); do chrt -p 99 $i; done
+sleep 3s
+echo ""
+	echo -e "\033[1;32mCONFIGURAÇÃO DE TWEAKER APLICADO COM SUCESSO !\033[1;37m"
+sleep 3s
+        else
+echo ""
+echo -e "\033[1;31mA INSTALAÇÃO FOI CANCELADA !\033[1;37m"
+sleep 3s
+        fi
+fi
+exit

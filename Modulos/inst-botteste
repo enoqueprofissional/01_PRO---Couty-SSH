@@ -1,0 +1,28 @@
+#!/bin/bash
+[[ $(screen -list| grep -c 'bot_teste') == '0' ]] && {
+    clear
+figlet 'BOT TESTE SSHWEB PRO' | boxes -d stone -p a0v0 | lolcat
+echo -e "\033[01;31m║\033[1;31m\033[5;34;47m           ATIVAR BOT TESTE SSHWEB PRO                \033[1;33m \033[0m\033[01;31m║"
+echo -e "\033[0;31m║\033[0m"
+    echo -e "\033[01;31m║\033[0m"
+    echo -ne "\033[1;31m╰━━━━━━━━❪\033[1;32mINFORME O TOKEN\033[1;37m: "
+    read token
+    clear
+    echo ""
+    echo -e "\033[1;32mINICIANDO BOT TESTE SSHWEB PRO\033[0m\n"
+    cd $HOME/BOT
+    rm -rf $HOME/BOT/botssh
+    wget https://githubusercontent.com/Couty-SSH/01_PRO/main/Sistema/botssh >/dev/null 2>&1
+    chmod 777 botssh
+    echo ""
+    sleep 1
+    screen -dmS bot_teste ./botssh $token > /dev/null 2>&1
+    clear
+    echo "BOT ATIVADO 🤖"
+    menu
+} || {
+    screen -r -S "bot_teste" -X quit
+    clear
+    echo "BOT DESATIVADO"
+    menu
+}
