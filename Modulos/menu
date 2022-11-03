@@ -557,6 +557,9 @@ case "$x" in
    p | P)
    menu2
    ;;
+   j | J)
+   .criar1
+   ;;
    v | V)
    v2raymanager
    ;;
