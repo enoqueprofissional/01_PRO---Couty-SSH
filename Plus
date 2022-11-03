@@ -329,6 +329,7 @@ cd /bin/ && wget https://raw.githubusercontent.com/Couty-SSH/01_PRO/main/Modulos
 cd /bin/ && wget https://raw.githubusercontent.com/Couty-SSH/01_PRO/main/Modulos/websocket.sh > /dev/null 2>&1
 cd /bin/ && wget https://raw.githubusercontent.com/Couty-SSH/01_PRO/main/Modulos/wsproxy.py > /dev/null 2>&1
 cd /etc/ && chmod +x .criar
+cd /etc/ && chmod +x .criar1
 cd /etc/ && chmod +x .rmuid
 cd /bin/ && chmod +x .uid
 cd /bin/ && chmod +x ackclear
